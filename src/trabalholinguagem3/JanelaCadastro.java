@@ -36,8 +36,8 @@ public class JanelaCadastro extends javax.swing.JFrame {
         textFieldMatricula = new javax.swing.JTextField();
         textFieldSemestre = new javax.swing.JTextField();
         textFieldNome = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        checkMasculino = new javax.swing.JCheckBox();
+        checkFeminino = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         checkComputacao = new javax.swing.JCheckBox();
         checkSistemas = new javax.swing.JCheckBox();
@@ -56,9 +56,9 @@ public class JanelaCadastro extends javax.swing.JFrame {
 
         jLabel5.setText("Semestre");
 
-        jCheckBox1.setText("Masculino");
+        checkMasculino.setText("Masculino");
 
-        jCheckBox2.setText("Feminino");
+        checkFeminino.setText("Feminino");
 
         jLabel6.setText("Curso");
 
@@ -123,9 +123,9 @@ public class JanelaCadastro extends javax.swing.JFrame {
                             .addComponent(textFieldSemestre)
                             .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
+                                .addComponent(checkMasculino)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox2)))))
+                                .addComponent(checkFeminino)))))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,8 +144,8 @@ public class JanelaCadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2))
+                    .addComponent(checkMasculino)
+                    .addComponent(checkFeminino))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,9 +182,29 @@ public class JanelaCadastro extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        String nome = textFieldNome.getText();
-        int idade = Integer.parseInt(textFieldIdade.getText());
-        Aluno aluno = new Aluno(nome,  idade, 'M', "01", 7, "CC");
+        
+        try{
+            String nome = textFieldNome.getText();
+            int idade = Integer.parseInt(textFieldIdade.getText());
+            Aluno aluno = new Aluno(nome,  idade, 'M', "01", 7, "CC");
+            char sexo;
+            if(checkMasculino.isSelected())
+                sexo = 'M';
+            else
+                sexo = 'F';
+            String matricula = textFieldMatricula.getText();
+            int semestre = Integer.parseInt(textFieldSemestre.getText());
+            String curso;
+            if(checkComputacao.isSelected())
+                curso = "Ciencia da Computacao";
+            else
+                curso = "Sistemas de Informacao";
+        }catch (NumberFormatException e){
+            System.out.println(e.getMessage());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**
@@ -224,10 +244,10 @@ public class JanelaCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox checkComputacao;
+    private javax.swing.JCheckBox checkFeminino;
+    private javax.swing.JCheckBox checkMasculino;
     private javax.swing.JCheckBox checkSistemas;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
