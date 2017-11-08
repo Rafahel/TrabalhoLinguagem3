@@ -5,6 +5,8 @@
  */
 package trabalholinguagem3;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Rafa
@@ -14,8 +16,14 @@ public class JanelaCadastro extends javax.swing.JFrame {
     /**
      * Creates new form JanelaCadastro
      */
-    public JanelaCadastro() {
+    private Aluno aluno;
+    private final JanelaPrincipal jan;
+    public JanelaCadastro(JanelaPrincipal j) {
+        this.jan = j;
         initComponents();
+        this.setVisible(true);
+        System.out.println("cosntrutor");
+        
     }
 
     /**
@@ -41,7 +49,7 @@ public class JanelaCadastro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         checkComputacao = new javax.swing.JCheckBox();
         checkSistemas = new javax.swing.JCheckBox();
-        jButton2 = new javax.swing.JButton();
+        botaoCadastrar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -56,12 +64,14 @@ public class JanelaCadastro extends javax.swing.JFrame {
 
         jLabel5.setText("Semestre");
 
+        checkMasculino.setSelected(true);
         checkMasculino.setText("Masculino");
 
         checkFeminino.setText("Feminino");
 
         jLabel6.setText("Curso");
 
+        checkComputacao.setSelected(true);
         checkComputacao.setText("Ciencia da computação");
         checkComputacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -76,10 +86,10 @@ public class JanelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cadastrar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                botaoCadastrarMouseClicked(evt);
             }
         });
 
@@ -103,7 +113,7 @@ public class JanelaCadastro extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(199, 199, 199))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(botaoCadastrar)
                         .addGap(174, 174, 174))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
@@ -161,7 +171,7 @@ public class JanelaCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkSistemas)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(botaoCadastrar)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -180,74 +190,83 @@ public class JanelaCadastro extends javax.swing.JFrame {
             checkComputacao.setSelected(false);
     }//GEN-LAST:event_checkSistemasMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void botaoCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCadastrarMouseClicked
         // TODO add your handling code here:
         
         try{
-            String nome = textFieldNome.getText();
-            int idade = Integer.parseInt(textFieldIdade.getText());
-            Aluno aluno = new Aluno(nome,  idade, 'M', "01", 7, "CC");
-            char sexo;
-            if(checkMasculino.isSelected())
-                sexo = 'M';
-            else
-                sexo = 'F';
-            String matricula = textFieldMatricula.getText();
-            int semestre = Integer.parseInt(textFieldSemestre.getText());
-            String curso;
-            if(checkComputacao.isSelected())
-                curso = "Ciencia da Computacao";
-            else
-                curso = "Sistemas de Informacao";
+//            String nome = textFieldNome.getText();
+//            int idade = Integer.parseInt(textFieldIdade.getText());
+//            char sexo;
+//            if(checkMasculino.isSelected())
+//                sexo = 'M';
+//            else
+//                sexo = 'F';
+//            String matricula = textFieldMatricula.getText();
+//            int semestre = Integer.parseInt(textFieldSemestre.getText());
+//            String curso;
+//            if(checkComputacao.isSelected())
+//                curso = "Ciencia da Computacao";
+//            else
+//                curso = "Sistemas de Informacao";
+//            this.aluno = new Aluno(nome,  idade, sexo, "01", 7, "CC");
+              this.aluno = new Aluno("1",  1, '1', "01", 7, "CC");
+              jan.recebeAluno(this.aluno);
         }catch (NumberFormatException e){
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
+              System.out.println("NumberFormat");
         }catch(Exception e){
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
+              System.out.println("Erro...");
         }
         
-    }//GEN-LAST:event_jButton2MouseClicked
+        
+    }//GEN-LAST:event_botaoCadastrarMouseClicked
 
+    public Aluno retornaAluno(){
+        return this.aluno;
+    }
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JanelaCadastro().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new JanelaCadastro().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCadastrar;
     private javax.swing.JCheckBox checkComputacao;
     private javax.swing.JCheckBox checkFeminino;
     private javax.swing.JCheckBox checkMasculino;
     private javax.swing.JCheckBox checkSistemas;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
