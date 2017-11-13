@@ -16,7 +16,7 @@ public class TrabalhoLinguagem3 {
      */
     public static void main(String[] args) {
         JanelaPrincipal main = new JanelaPrincipal();
-        main.show();
+        main.setVisible(true);
     }
     
 }

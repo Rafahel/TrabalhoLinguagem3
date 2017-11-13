@@ -5,7 +5,10 @@
  */
 package trabalholinguagem3;
 
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -17,13 +20,12 @@ public class JanelaCadastro extends javax.swing.JFrame {
      * Creates new form JanelaCadastro
      */
     private Aluno aluno;
-    private final JanelaPrincipal jan;
-    public JanelaCadastro(JanelaPrincipal j) {
-        this.jan = j;
+    private ArrayList<Aluno> alunos; 
+    
+    public JanelaCadastro(ArrayList<Aluno> alunos) {
+        this.alunos = alunos;
         initComponents();
-        this.setVisible(true);
-        System.out.println("cosntrutor");
-        
+        this.setVisible(true);        
     }
 
     /**
@@ -53,6 +55,7 @@ public class JanelaCadastro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Nome");
 
@@ -66,8 +69,18 @@ public class JanelaCadastro extends javax.swing.JFrame {
 
         checkMasculino.setSelected(true);
         checkMasculino.setText("Masculino");
+        checkMasculino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkMasculinoMouseClicked(evt);
+            }
+        });
 
         checkFeminino.setText("Feminino");
+        checkFeminino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkFemininoMouseClicked(evt);
+            }
+        });
 
         jLabel6.setText("Curso");
 
@@ -180,87 +193,70 @@ public class JanelaCadastro extends javax.swing.JFrame {
 
     private void checkComputacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkComputacaoMouseClicked
         // TODO add your handling code here:
+        if(!checkComputacao.isSelected())
+            checkComputacao.setSelected(true);
         if(checkSistemas.isSelected())
             checkSistemas.setSelected(false);
     }//GEN-LAST:event_checkComputacaoMouseClicked
 
     private void checkSistemasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkSistemasMouseClicked
         // TODO add your handling code here:
+        if(!checkSistemas.isSelected())
+            checkSistemas.setSelected(true);
         if(checkComputacao.isSelected())
             checkComputacao.setSelected(false);
     }//GEN-LAST:event_checkSistemasMouseClicked
 
     private void botaoCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCadastrarMouseClicked
-        // TODO add your handling code here:
-        
+        // Aqui é recolhido os dados do cadastro de um aluno e enviado para a janela princial do programa.
         try{
-//            String nome = textFieldNome.getText();
-//            int idade = Integer.parseInt(textFieldIdade.getText());
-//            char sexo;
-//            if(checkMasculino.isSelected())
-//                sexo = 'M';
-//            else
-//                sexo = 'F';
-//            String matricula = textFieldMatricula.getText();
-//            int semestre = Integer.parseInt(textFieldSemestre.getText());
-//            String curso;
-//            if(checkComputacao.isSelected())
-//                curso = "Ciencia da Computacao";
-//            else
-//                curso = "Sistemas de Informacao";
-//            this.aluno = new Aluno(nome,  idade, sexo, "01", 7, "CC");
-              this.aluno = new Aluno("1",  1, '1', "01", 7, "CC");
-              jan.recebeAluno(this.aluno);
+            String nome = textFieldNome.getText();
+            int idade = Integer.parseInt(textFieldIdade.getText());
+            char sexo;
+            if(checkMasculino.isSelected())
+                sexo = 'M';
+            else
+                sexo = 'F';
+            String matricula = textFieldMatricula.getText();
+            int semestre = Integer.parseInt(textFieldSemestre.getText());
+            String curso;
+            if(checkComputacao.isSelected())
+                curso = "Ciencia da Computacao";
+            else
+                curso = "Sistemas de Informacao";
+            this.alunos.add(new Aluno(nome,  idade, sexo, matricula, semestre, curso));
+            showMessageDialog(null, "Cadastro Realizado com sucesso.");            
         }catch (NumberFormatException e){
-//            System.out.println(e.getMessage());
-              System.out.println("NumberFormat");
+              showMessageDialog(null, "Dados invalidos, verifique se as entradas foram realizadas corretamente!", "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
         }catch(Exception e){
-//            System.out.println(e.getMessage());
-              System.out.println("Erro...");
+            showMessageDialog(null, "Erro indeterminado: " + e.getMessage(), "ERRO INDETERMINADO", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            this.textFieldIdade.setText("");
+            this.textFieldMatricula.setText("");
+            this.textFieldNome.setText("");
+            this.textFieldSemestre.setText("");
         }
         
-        
     }//GEN-LAST:event_botaoCadastrarMouseClicked
+
+    private void checkMasculinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkMasculinoMouseClicked
+        if(!checkMasculino.isSelected())
+            checkMasculino.setSelected(true);
+        if(checkMasculino.isSelected())
+            checkFeminino.setSelected(false);
+    }//GEN-LAST:event_checkMasculinoMouseClicked
+
+    private void checkFemininoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkFemininoMouseClicked
+        if(!checkFeminino.isSelected())
+            checkFeminino.setSelected(true);
+        if(checkFeminino.isSelected())
+            checkMasculino.setSelected(false);
+    }//GEN-LAST:event_checkFemininoMouseClicked
 
     public Aluno retornaAluno(){
         return this.aluno;
     }
     
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(JanelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new JanelaCadastro().setVisible(true);
-//            }
-//        });
-//    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JCheckBox checkComputacao;

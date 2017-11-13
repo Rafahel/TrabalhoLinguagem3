@@ -6,6 +6,7 @@
 package trabalholinguagem3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -14,15 +15,25 @@ import java.util.ArrayList;
 public class JanelaPrincipal extends javax.swing.JFrame {
     
     private ArrayList<Aluno> alunos;
-    private Aluno aluno;
     /**
      * Creates new form JanelaPrincipal
      */
     public JanelaPrincipal() {
         this.alunos = new ArrayList();
+        this.addAlunosTeste();
         initComponents();
+        
     }
 
+    private void addAlunosTeste(){
+        String[] nomes = {"Joao", "Alice", "Juca", "Inacio", "Jack", "Kate", "Hurley", "Sawyer", "Richard", "Jacob" };
+        for (int i = 0; i < 10; i++) {
+            this.alunos.add(new Aluno(nomes[i], i, 'M', i+"", i, "CC"));
+           
+        }
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +49,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("Cadastrar Aluno");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -46,11 +58,16 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Lista Alunos");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("jButton3");
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Debug");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
@@ -66,9 +83,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(146, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,9 +99,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
                 .addComponent(jButton4)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -89,25 +109,29 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        JanelaCadastro  cadastro = new JanelaCadastro(this);
+        JanelaCadastro  cadastro = new JanelaCadastro(this.alunos);
         
        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
         try{
             System.out.println(this.alunos.size());
             for(Aluno a : alunos){
-                System.out.println(a.getNome());
-            }
+            System.out.println(a.toString());
+        }
+            
         }catch(Exception e){
             System.out.println(e);
         }
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        JanelaListaAlunos listaAlunos = new JanelaListaAlunos(this.alunos);
+    }//GEN-LAST:event_jButton2MouseClicked
     public void recebeAluno(Aluno a){
-        System.out.println("chamado");
-        this.alunos.add(this.aluno);
+        this.alunos.add(a);
+        
     }
     /**
      * @param args the command line arguments
