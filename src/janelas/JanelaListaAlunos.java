@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalholinguagem3;
+package janelas;
 
 import java.util.ArrayList;
 import javax.swing.JList;
+import trabalholinguagem3.Aluno;
 
 /**
  *

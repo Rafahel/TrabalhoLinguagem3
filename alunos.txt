@@ -1,0 +1,11 @@
+Joao 0 M CC 0 0
+Alice 1 M CC 1 1
+Juca 2 M CC 2 2
+Inacio 3 M CC 3 3
+Jack 4 M CC 4 4
+Kate 5 M CC 5 5
+Hurley 6 M CC 6 6
+Sawyer 7 M CC 7 7
+Richard 8 M CC 8 8
+Jacob 9 M CC 9 9
+Kurumin 32 M SI 6443553 3

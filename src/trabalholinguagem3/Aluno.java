@@ -47,9 +47,9 @@ public class Aluno extends Pessoa {
 
     @Override
     public String toString() {
-        return "Nome: " + this.getNome() + "\nIdade: " + this.getIdade() + "\nSexo: " + 
-                this.getSexo() + "\nMatricula: " + this.getMatricula() + 
-                "\nCurso: " + this.getCurso() + "\nSemestre: " + this.getSemestre();
+        return this.getNome() + " " + this.getIdade() + " " + this.getSexo() +
+                " " + this.getCurso() + " " + this.getMatricula() + " "
+                + this.getSemestre();
     }
     
     

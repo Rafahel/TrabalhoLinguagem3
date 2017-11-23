@@ -5,6 +5,8 @@
  */
 package trabalholinguagem3;
 
+import janelas.JanelaPrincipal;
+
 /**
  *
  * @author Rafa
