@@ -19,15 +19,15 @@ import static javax.swing.JOptionPane.showMessageDialog;
  *
  * @author Rafa
  */
-public class JanelaCadastro extends javax.swing.JFrame {
+public class JanelaCadastroAlunos extends javax.swing.JFrame {
 
     /**
-     * Creates new form JanelaCadastro
+     * Creates new form JanelaCadastroAlunos
      */
     private Aluno aluno;
     private ArrayList<Aluno> alunos; 
     
-    public JanelaCadastro(ArrayList<Aluno> alunos) {
+    public JanelaCadastroAlunos(ArrayList<Aluno> alunos) {
         this.alunos = alunos;
         initComponents();
         this.setVisible(true);        

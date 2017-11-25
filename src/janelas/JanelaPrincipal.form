@@ -36,6 +36,7 @@
                   <Component id="jButton2" max="32767" attributes="0"/>
                   <Component id="cadastroComponente" max="32767" attributes="0"/>
                   <Component id="botaoCadastroRobo" max="32767" attributes="0"/>
+                  <Component id="botaoCadastroPlaca" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
@@ -52,7 +53,9 @@
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="botaoCadastroRobo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="245" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="botaoCadastroPlaca" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="202" max="32767" attributes="0"/>
               <Component id="DEBUG" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -98,6 +101,14 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botaoCadastroRoboMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoCadastroPlaca">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar Placa"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botaoCadastroPlacaMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

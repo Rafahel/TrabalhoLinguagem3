@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import trabalholinguagem3.Componente;
 import trabalholinguagem3.Robo;
 
-public class CadastroRobo extends javax.swing.JFrame {
+public class JanelaCadastroRobo extends javax.swing.JFrame {
 
     private final ArrayList<Componente> componentes;
     private ArrayList<Componente> componentesAdicionados;
     private ArrayList<Robo> robos;
-    public CadastroRobo(ArrayList<Componente> componentes, ArrayList<Robo> robos ) {
+    public JanelaCadastroRobo(ArrayList<Componente> componentes, ArrayList<Robo> robos ) {
         this.componentes = componentes;
         this.componentesAdicionados = new ArrayList();
         this.robos = robos;

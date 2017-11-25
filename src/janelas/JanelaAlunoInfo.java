@@ -48,6 +48,8 @@ public class JanelaAlunoInfo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jlabelCurso = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jlabelEmail = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -109,10 +111,23 @@ public class JanelaAlunoInfo extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Nome:");
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Email:");
+
+        jlabelEmail.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jlabelEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlabelEmail.setText("jLabel8");
+        jlabelEmail.setText(this.aluno.getEmail());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(121, 121, 121))
             .addGroup(layout.createSequentialGroup()
                 .addGap(177, 177, 177)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +136,11 @@ public class JanelaAlunoInfo extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlabelEmail)
                     .addComponent(jlabelSemestre)
                     .addComponent(jlabelIdade)
                     .addComponent(jlabelNome)
@@ -131,10 +148,6 @@ public class JanelaAlunoInfo extends javax.swing.JFrame {
                     .addComponent(jlabelMatricula)
                     .addComponent(jlabelCurso))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(121, 121, 121))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +178,11 @@ public class JanelaAlunoInfo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jlabelMatricula))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jlabelEmail))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
@@ -180,7 +197,9 @@ public class JanelaAlunoInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jlabelCurso;
+    private javax.swing.JLabel jlabelEmail;
     private javax.swing.JLabel jlabelIdade;
     private javax.swing.JLabel jlabelMatricula;
     private javax.swing.JLabel jlabelNome;

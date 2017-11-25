@@ -6,15 +6,15 @@
 package janelas;
 
 import janelas.JanelaListaAlunos;
-import janelas.JanelaCadastro;
+import janelas.JanelaCadastroAlunos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import trabalholinguagem3.Aluno;
 import trabalholinguagem3.Arquivo;
-import trabalholinguagem3.CadastroItems;
 import trabalholinguagem3.Componente;
+import trabalholinguagem3.Placa;
 import trabalholinguagem3.Robo;
 
 /**
@@ -49,6 +49,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         for (int i = 0; i < 10; i++) {
             this.componentes.add(new Componente("Componente " + i, "Tipo " + i, "Modelo " + i, "Descricao " + i));
         }
+        
+        
+        boolean t = false;
+        for (int i = 0; i < 10; i++) {
+            if(t){
+                this.componentes.add(new Placa("Arduino", "UNO", "Descrição arduino UNO", "ATMEGA", 15, 5));
+                t = false;
+            }
+            else{
+                this.componentes.add(new Placa("Raspberry pi", "UNO", "Descrição arduino UNO", "ATMEGA", 15, 5));
+                t = true;
+            }
+                
+        }
     }
     
     
@@ -66,6 +80,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         cadastroComponente = new javax.swing.JButton();
         DEBUG = new javax.swing.JButton();
         botaoCadastroRobo = new javax.swing.JButton();
+        botaoCadastroPlaca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -105,6 +120,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botaoCadastroPlaca.setText("Cadastrar Placa");
+        botaoCadastroPlaca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoCadastroPlacaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,7 +141,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cadastroComponente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botaoCadastroRobo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botaoCadastroRobo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoCadastroPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,7 +156,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(botaoCadastroRobo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(botaoCadastroPlaca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
                 .addComponent(DEBUG)
                 .addContainerGap())
         );
@@ -143,7 +168,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        JanelaCadastro cadastro = new JanelaCadastro(this.alunos);
+        JanelaCadastroAlunos cadastro = new JanelaCadastroAlunos(this.alunos);
         
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -174,17 +199,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void cadastroComponenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastroComponenteMouseClicked
         // TODO add your handling code here:
-        CadastroItems cadastroItems = new CadastroItems(this.componentes);  
+        JanelaCadastroComponentes cadastroItems = new JanelaCadastroComponentes(this.componentes);  
         this.salvaComponentes();
     }//GEN-LAST:event_cadastroComponenteMouseClicked
 
     private void botaoCadastroRoboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCadastroRoboMouseClicked
-        CadastroRobo cr = new CadastroRobo(this.componentes, this.robos);
+        JanelaCadastroRobo cr = new JanelaCadastroRobo(this.componentes, this.robos);
     }//GEN-LAST:event_botaoCadastroRoboMouseClicked
+
+    private void botaoCadastroPlacaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCadastroPlacaMouseClicked
+        JanelaCadastroPlacas cp = new JanelaCadastroPlacas(this.componentes);
+    }//GEN-LAST:event_botaoCadastroPlacaMouseClicked
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DEBUG;
+    private javax.swing.JButton botaoCadastroPlaca;
     private javax.swing.JButton botaoCadastroRobo;
     private javax.swing.JButton cadastroComponente;
     private javax.swing.JButton jButton1;

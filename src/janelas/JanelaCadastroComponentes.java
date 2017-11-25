@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalholinguagem3;
+package janelas;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import trabalholinguagem3.Componente;
 import trabalholinguagem3.Componente;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -14,18 +15,18 @@ import static javax.swing.JOptionPane.showMessageDialog;
  *
  * @author Rafa
  */
-public class CadastroItems extends javax.swing.JFrame {
+public class JanelaCadastroComponentes extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroItems
+     * Creates new form JanelaCadastroComponentes
      */
     private ArrayList<Componente> componentes;
-    public CadastroItems(ArrayList<Componente> componentes) {
+    public JanelaCadastroComponentes(ArrayList<Componente> componentes) {
         this.componentes = componentes;
         initComponents();
         this.setVisible(true);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
