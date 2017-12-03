@@ -23,6 +23,18 @@ public class Placa extends Componente {
         this.pinosDigitais = pinosDigitais;
         this.pinosAnalogicos = pinosAnalogicos;
     }
+
+    public String getProcessador() {
+        return processador;
+    }
+
+    public int getPinosDigitais() {
+        return pinosDigitais;
+    }
+
+    public int getPinosAnalogicos() {
+        return pinosAnalogicos;
+    }
     
     
     

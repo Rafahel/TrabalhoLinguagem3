@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import trabalholinguagem3.Aluno;
-import trabalholinguagem3.Arquivo;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
@@ -231,7 +230,6 @@ public class JanelaCadastroAlunos extends javax.swing.JFrame {
                 curso = "SI";
             this.alunos.add(new Aluno(nome,  idade, sexo, matricula, semestre, curso));
             showMessageDialog(null, "Cadastro Realizado com sucesso.");
-            this.salvaAlunos();
         }catch (NumberFormatException e){
               showMessageDialog(null, "Dados invalidos, verifique se as entradas foram realizadas corretamente!", "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
         }catch(Exception e){
@@ -245,14 +243,6 @@ public class JanelaCadastroAlunos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botaoCadastrarMouseClicked
 
-    private void salvaAlunos(){
-        Arquivo arquivo = new Arquivo(this.alunos, null);
-        try {
-            arquivo.escreveAlunos();
-        } catch (IOException ex) {
-            Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
     private void checkMasculinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkMasculinoMouseClicked
         if(!checkMasculino.isSelected())

@@ -6,6 +6,7 @@
 package trabalholinguagem3;
 
 import janelas.JanelaPrincipal;
+import janelas.JanelaPrincipal1;
 
 /**
  *
@@ -17,7 +18,7 @@ public class TrabalhoLinguagem3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JanelaPrincipal main = new JanelaPrincipal();
+        JanelaPrincipal1 main = new JanelaPrincipal1();
         main.setVisible(true);
     }
     

@@ -1,7 +1,7 @@
 package janelas;
 
 
-import java.util.Arrays;
+import javax.swing.ImageIcon;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -94,12 +94,12 @@ public class JanelaLogIn extends javax.swing.JFrame {
 
     private void botaoEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEntrarMouseClicked
         // TODO add your handling code here:
-        JanelaPrincipal jp;
+        JanelaPrincipal1 jp;
         String senha = new String(this.PasswordSenha.getPassword());
         System.out.println(senha);
         if(this.usuario.equals(this.textFieldUsuario.getText())
                 && this.senha.equals(senha)){
-            jp = new JanelaPrincipal();
+            jp = new JanelaPrincipal1();
             this.dispose();
         }   
         else
