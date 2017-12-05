@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalholinguagem3;
+package classes;
 
-import janelas.JanelaPrincipal;
+import janelas.OLDJanelaPrincipal;
 import janelas.JanelaPrincipal1;
 
 /**

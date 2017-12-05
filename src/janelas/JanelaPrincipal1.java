@@ -16,10 +16,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import trabalholinguagem3.Aluno;
-import trabalholinguagem3.Componente;
-import trabalholinguagem3.Placa;
-import trabalholinguagem3.Robo;
+import classes.Aluno;
+import classes.Componente;
+import classes.Placa;
+import classes.Robo;
 
 /**
  *

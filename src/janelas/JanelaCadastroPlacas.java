@@ -3,8 +3,8 @@ package janelas;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
-import trabalholinguagem3.Componente;
-import trabalholinguagem3.Placa;
+import classes.Componente;
+import classes.Placa;
 
 
 public class JanelaCadastroPlacas extends javax.swing.JFrame {
@@ -35,7 +35,7 @@ public class JanelaCadastroPlacas extends javax.swing.JFrame {
         jSpinnerPinosAnalogicos = new javax.swing.JSpinner();
         jButtonConcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nome:");
 
@@ -146,17 +146,22 @@ public class JanelaCadastroPlacas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void jButtonConcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConcluirMouseClicked
-        System.out.println(this.jSpinnerPinosDigitais.getValue());
-        int digitais = Integer.parseInt(this.jSpinnerPinosDigitais.getValue().toString());
-        int analogicos = Integer.parseInt(this.jSpinnerPinosAnalogicos.getValue().toString());
-        if(digitais < 0 || analogicos < 0){
-            showMessageDialog(null, "O número de pinos digitais ou analógicos devem ser maiores que 0 (zero)", "ERRO NO CADASTRO", JOptionPane.ERROR_MESSAGE);
-        }else{
-            this.placas.add( new Placa(this.jTextFieldNome.getText(),
-                    this.jTextFieldModelo.getText(), this.jTextAreaDescricao.getText(),
-                    this.jTextFieldProcessador.getText(), Integer.parseInt(this.jSpinnerPinosDigitais.getValue().toString()),
-                    Integer.parseInt(this.jSpinnerPinosAnalogicos.getValue().toString())));
-            this.dispose();
+        try{
+            int digitais = Integer.parseInt(this.jSpinnerPinosDigitais.getValue().toString());
+            int analogicos = Integer.parseInt(this.jSpinnerPinosAnalogicos.getValue().toString());
+            if(digitais < 0 || analogicos < 0){
+                showMessageDialog(null, "O número de pinos digitais ou analógicos devem ser maiores que 0 (zero)", "ERRO NO CADASTRO", JOptionPane.ERROR_MESSAGE);
+            }else{
+                
+                this.placas.add( new Placa(this.jTextFieldNome.getText(),
+                        this.jTextFieldModelo.getText(), this.jTextAreaDescricao.getText(),
+                        this.jTextFieldProcessador.getText(), Integer.parseInt(this.jSpinnerPinosDigitais.getValue().toString()),
+                        Integer.parseInt(this.jSpinnerPinosAnalogicos.getValue().toString())));
+                showMessageDialog(null, "Cadastro Realizado com sucesso.");
+                this.dispose();
+            }
+        }catch(Exception erro){
+                    showMessageDialog(null, "Erro ao cadastrar, cheque os dados e tente novamente.", "ERRO NO CADASTRO", JOptionPane.ERROR_MESSAGE);
         }
             
         

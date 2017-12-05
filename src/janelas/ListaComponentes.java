@@ -3,7 +3,7 @@ package janelas;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import trabalholinguagem3.Componente;
+import classes.Componente;
 
 
 public class ListaComponentes extends javax.swing.JFrame {

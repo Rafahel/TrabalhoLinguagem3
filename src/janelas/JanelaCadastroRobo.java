@@ -1,8 +1,8 @@
 package janelas;
 
 import java.util.ArrayList;
-import trabalholinguagem3.Componente;
-import trabalholinguagem3.Robo;
+import classes.Componente;
+import classes.Robo;
 
 public class JanelaCadastroRobo extends javax.swing.JFrame {
 

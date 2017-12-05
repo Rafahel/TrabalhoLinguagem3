@@ -5,7 +5,7 @@
  */
 package janelas;
 
-import trabalholinguagem3.Aluno;
+import classes.Aluno;
 
 /**
  *

@@ -1,7 +1,7 @@
 
 package janelas;
 
-import trabalholinguagem3.Componente;
+import classes.Componente;
 
 public class JanelaComponenteInfo extends javax.swing.JFrame {
 

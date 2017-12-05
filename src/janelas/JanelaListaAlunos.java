@@ -7,7 +7,7 @@ package janelas;
 
 import java.util.ArrayList;
 import javax.swing.JList;
-import trabalholinguagem3.Aluno;
+import classes.Aluno;
 
 /**
  *

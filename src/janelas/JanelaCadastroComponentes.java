@@ -7,8 +7,8 @@ package janelas;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import trabalholinguagem3.Componente;
-import trabalholinguagem3.Componente;
+import classes.Componente;
+import classes.Componente;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
@@ -148,7 +148,7 @@ public class JanelaCadastroComponentes extends javax.swing.JFrame {
             this.componentes.add(new Componente(this.textFieldNome.getText(),
                 this.textFieldTipo.getText(), this.textFieldModelo.getText(),
                 this.textAreaDescricao.getText()));
-            System.out.println("ID ATUAL: " + Componente.getId());
+            System.out.println("ID ATUAL: " + Componente.getTotalComponentes());
         }else{
             showMessageDialog(null, "Campos obrigatórios em branco!", "ERRO DE PREENCHIMENTO", JOptionPane.ERROR_MESSAGE);
         }

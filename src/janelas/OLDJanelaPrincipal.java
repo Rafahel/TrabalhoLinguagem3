@@ -8,16 +8,16 @@ package janelas;
 import janelas.JanelaListaAlunos;
 import janelas.JanelaCadastroAlunos;
 import java.util.ArrayList;
-import trabalholinguagem3.Aluno;
-import trabalholinguagem3.Componente;
-import trabalholinguagem3.Placa;
-import trabalholinguagem3.Robo;
+import classes.Aluno;
+import classes.Componente;
+import classes.Placa;
+import classes.Robo;
 
 /**
  *
  * @author Rafa
  */
-public class JanelaPrincipal extends javax.swing.JFrame {
+public class OLDJanelaPrincipal extends javax.swing.JFrame {
     
     private ArrayList<Aluno> alunos;
     private ArrayList<Componente> componentes;
@@ -25,7 +25,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form JanelaPrincipal
      */
-    public JanelaPrincipal() {
+    public OLDJanelaPrincipal() {
         this.alunos = new ArrayList();
         this.componentes = new ArrayList();
         this.robos = new ArrayList();

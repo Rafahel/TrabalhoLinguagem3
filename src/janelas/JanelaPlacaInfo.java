@@ -1,7 +1,7 @@
 
 package janelas;
 
-import trabalholinguagem3.Placa;
+import classes.Placa;
 
 public class JanelaPlacaInfo extends javax.swing.JFrame {
 

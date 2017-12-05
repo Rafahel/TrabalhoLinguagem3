@@ -1,16 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package trabalholinguagem3;
+package classes;
 
-import trabalholinguagem3.Componente;
 
-/**
- *
- * @author Rafa
- */
 public class Placa extends Componente {
     
     private String processador;
@@ -35,9 +25,21 @@ public class Placa extends Componente {
     public int getPinosAnalogicos() {
         return pinosAnalogicos;
     }
+
+    public void setProcessador(String processador) {
+        this.processador = processador;
+    }
+
+    public void setPinosDigitais(int pinosDigitais) {
+        this.pinosDigitais = pinosDigitais;
+    }
+
+    public void setPinosAnalogicos(int pinosAnalogicos) {
+        this.pinosAnalogicos = pinosAnalogicos;
+    }
     
-    
-    
-   
-    
+    @Override
+    public String toFileFormat() {
+        return super.toFileFormat() + " " + this.processador + " " + this.pinosAnalogicos + " " + this.pinosDigitais;
+    }
 }

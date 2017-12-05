@@ -3,33 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalholinguagem3;
+package classes;
 
 /**
  *
  * @author Rafa
  */
-public class Componente {
+public class Componente implements FileFormater {
     private String nome;
     private String tipo;
     private String modelo;
     private String descricao;
-    private static int id;
+    private static int totalComponentes;
 
     public Componente(String nome, String tipo, String modelo, String descricao) {
         this.nome = nome;
         this.tipo = tipo;
         this.modelo = modelo;
         this.descricao = descricao;
-        addId();
+        addTotalComp();
     }
 
-    private static void addId(){
-        id++;
+    private static void addTotalComp(){
+        totalComponentes++;
     }
 
-    public static int getId() {
-        return id;
+    public static int getTotalComponentes() {
+        return totalComponentes;
     }
     
     public String getNome() {
@@ -65,10 +65,8 @@ public class Componente {
     }
 
     @Override
-    public String toString() {
+    public String toFileFormat() {
         return nome + " " + tipo + " " + modelo + " " + descricao ;
     }
-    
-    
     
 }
