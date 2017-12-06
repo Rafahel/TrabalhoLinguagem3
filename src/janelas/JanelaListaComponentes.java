@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.swing.JList;
 import classes.Componente;
 import classes.Placa;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -172,38 +174,51 @@ public class JanelaListaComponentes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaComponentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaComponentesMouseClicked
-        System.out.println(this.componentes.get(this.listaComponentes.getAnchorSelectionIndex()).getDescricao());
-        JanelaComponenteInfo componentInfo;
-        JanelaPlacaInfo placaInfo;
-        if(this.componentes.get(this.listaComponentes.getAnchorSelectionIndex()) instanceof Placa)
-            placaInfo = new JanelaPlacaInfo((Placa)this.componentes.get(this.listaComponentes.getAnchorSelectionIndex()));
-        else            
-            componentInfo = new JanelaComponenteInfo(this.componentes.get(this.listaComponentes.getAnchorSelectionIndex()));
+        try{
+            System.out.println(this.componentes.get(this.listaComponentes.getAnchorSelectionIndex()).getDescricao());
+            JanelaComponenteInfo componentInfo;
+            JanelaPlacaInfo placaInfo;
+            if(this.componentes.get(this.listaComponentes.getAnchorSelectionIndex()) instanceof Placa)
+                placaInfo = new JanelaPlacaInfo((Placa)this.componentes.get(this.listaComponentes.getAnchorSelectionIndex()));
+            else            
+                componentInfo = new JanelaComponenteInfo(this.componentes.get(this.listaComponentes.getAnchorSelectionIndex()));
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "A lista de componentes esta vazia!", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
         
             
     }//GEN-LAST:event_listaComponentesMouseClicked
 
     private void jButtonBuscarNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarNomeMouseClicked
 
-        ArrayList<String> listastr = new ArrayList();
-        this.componenteBusca = new ArrayList();
-        for (Componente a : this.componentes) {
-            if (a.getNome().contains(this.jTextFieldNome.getText())) {
-                listastr.add(a.getNome());
-                this.componenteBusca.add(a);
-            }
-        }
-        String[] nomes = listastr.toArray(new String[listastr.size()]);
-        this.jListBusca.setModel(new javax.swing.AbstractListModel<String>() {
-            public int getSize() {
-                return nomes.length;
-            }
+        try{
+            if(this.componentes.size() > 0){
+                ArrayList<String> listastr = new ArrayList();
+                this.componenteBusca = new ArrayList();
+                for (Componente a : this.componentes) {
+                    if (a.getNome().contains(this.jTextFieldNome.getText())) {
+                        listastr.add(a.getNome());
+                        this.componenteBusca.add(a);
+                    }
+                }
+                String[] nomes = listastr.toArray(new String[listastr.size()]);
+                this.jListBusca.setModel(new javax.swing.AbstractListModel<String>() {
+                    public int getSize() {
+                        return nomes.length;
+                    }
 
-            public String getElementAt(int i) {
-                return nomes[i];
+                    public String getElementAt(int i) {
+                        return nomes[i];
+                    }
+                });
+                this.jListBusca.setVisible(true);
             }
-        });
-        this.jListBusca.setVisible(true);
+            else{
+                showMessageDialog(null, "Não há componentes cadastrados no sistema", "Aviso", JOptionPane.ERROR_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException e){
+            
+        }
     }//GEN-LAST:event_jButtonBuscarNomeMouseClicked
 
     private void jListBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListBuscaMouseClicked

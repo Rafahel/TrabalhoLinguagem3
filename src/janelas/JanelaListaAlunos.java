@@ -8,11 +8,10 @@ package janelas;
 import java.util.ArrayList;
 import javax.swing.JList;
 import classes.Aluno;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 
-/**
- *
- * @author Rafa
- */
+
 public class JanelaListaAlunos extends javax.swing.JFrame {
 
     /**
@@ -24,16 +23,25 @@ public class JanelaListaAlunos extends javax.swing.JFrame {
 
     public JanelaListaAlunos(ArrayList<Aluno> a) {
         this.alunos = a;
-
-        this.nomes = new String[a.size()];
-        for (int i = 0; i < a.size(); i++) {
-            this.nomes[i] = a.get(i).getNome();
-        }
-        this.sortStringBubble(nomes);
+         
+        
+        inicializaNomes();
         initComponents();
         this.setVisible(true);
     }
 
+    private void inicializaNomes(){
+        try{
+           this.nomes = new String[this.alunos.size()];
+            for (int i = 0; i < this.alunos.size(); i++) {
+                this.nomes[i] = this.alunos.get(i).getNome();
+              
+            }
+            this.sortStringBubble(nomes);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     private void sortStringBubble(String x[]) { // ARRUMAR BUG ARRAYLIST
         int j;
         boolean flag = true;
@@ -169,48 +177,76 @@ public class JanelaListaAlunos extends javax.swing.JFrame {
 
     private void listaAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaAlunosMouseClicked
         System.out.println(this.listaAlunos.getAnchorSelectionIndex());
-        JanelaAlunoInfo alunoInfo = new JanelaAlunoInfo(this.alunos.get(this.listaAlunos.getAnchorSelectionIndex()));
-        alunoInfo.mostraJanela();
+        try{
+            JanelaAlunoInfo alunoInfo = new JanelaAlunoInfo(this.alunos.get(this.listaAlunos.getAnchorSelectionIndex()));
+            alunoInfo.mostraJanela();
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "A lista de alunos esta vazia!", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_listaAlunosMouseClicked
 
     private void jButtonBuscarNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarNomeMouseClicked
 
-        ArrayList<String> listastr = new ArrayList();
-        this.alunosBusca = new ArrayList();
-        for (Aluno a : this.alunos) {
-            if (a.getNome().contains(this.jTextFieldNome.getText())) {
-                listastr.add(a.getNome());
-                this.alunosBusca.add(a);
-            }
-        }
-        String[] nomes = listastr.toArray(new String[listastr.size()]);
-        this.jListBusca.setModel(new javax.swing.AbstractListModel<String>() {
-            public int getSize() {
-                return nomes.length;
-            }
+        try{
+            System.out.println(this.alunos.size());
+            if(this.alunos.size() > 0){
+                ArrayList<String> listastr = new ArrayList();
+               this.alunosBusca = new ArrayList();
+                for (Aluno a : this.alunos) {
+                    if (a.getNome().contains(this.jTextFieldNome.getText())) {
+                        listastr.add(a.getNome());
+                        this.alunosBusca.add(a);
+                    }
+                    String[] nomes = listastr.toArray(new String[listastr.size()]);
+                    this.jListBusca.setModel(new javax.swing.AbstractListModel<String>() {
+                        public int getSize() {
+                            return nomes.length;
+                        }
 
-            public String getElementAt(int i) {
-                return nomes[i];
+                        public String getElementAt(int i) {
+                            return nomes[i];
+                        }
+                    });
+                    this.jListBusca.setVisible(true);
+                }
             }
-        });
-        this.jListBusca.setVisible(true);
+            else{
+                showMessageDialog(null, "Não há alunos cadastrados no sistema.", "Aviso", JOptionPane.ERROR_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButtonBuscarNomeMouseClicked
 
     private void jListBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListBuscaMouseClicked
         // Seleciona aluno na lista e abre janela com informações sobre o aluno cadastrado.
-        System.out.println(this.listaAlunos.getAnchorSelectionIndex());
-        JanelaAlunoInfo alunoInfo = new JanelaAlunoInfo(this.alunosBusca.get(this.jListBusca.getAnchorSelectionIndex()));
-        alunoInfo.mostraJanela();
+        try{
+            System.out.println(this.listaAlunos.getAnchorSelectionIndex());
+            JanelaAlunoInfo alunoInfo = new JanelaAlunoInfo(this.alunosBusca.get(this.jListBusca.getAnchorSelectionIndex()));
+            alunoInfo.mostraJanela();
+        }catch(ArrayIndexOutOfBoundsException e){
+            showMessageDialog(null, "A lista de alunos esta vazia!", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jListBuscaMouseClicked
 
     private void jButtonBuscarMatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarMatriculaMouseClicked
         // TODO add your handling code here:
-        JanelaAlunoInfo alunoInfo;
-        for (Aluno aluno : this.alunos) {
-            if (aluno.getMatricula().equals(this.jTextFieldMatricula.getText())) {
-                alunoInfo = new JanelaAlunoInfo(aluno);
-                break;
+        try{
+            System.out.println(this.alunos.size());
+            if(this.alunos.size() > 0){
+                JanelaAlunoInfo alunoInfo;
+                for (Aluno aluno : this.alunos) {
+                    if (aluno.getMatricula().equals(this.jTextFieldMatricula.getText())) {
+                        alunoInfo = new JanelaAlunoInfo(aluno);
+                        alunoInfo.mostraJanela();
+                        break;
+                    }
+                }
+            }else{
+                showMessageDialog(null, "Não há alunos cadastrados no sistema.", "Aviso", JOptionPane.ERROR_MESSAGE);
             }
+        }catch(ArrayIndexOutOfBoundsException e){
+            
         }
     }//GEN-LAST:event_jButtonBuscarMatriculaMouseClicked
 

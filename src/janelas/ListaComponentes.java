@@ -141,22 +141,30 @@ public class ListaComponentes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaComponentesAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaComponentesAdicionarMouseClicked
-        this.componentesAdicionados.add(this.componentes.get(this.listaComponentesAdicionar.getAnchorSelectionIndex()));
-        this.retornoComponentes = this.componentesAdicionados;
-        System.out.println(this.componentesAdicionados.size());
-        String[] comp = new String[this.componentesAdicionados.size()];
-        int j = 0;
-        for (Componente c : this.componentesAdicionados) {
-            comp[j] = c.getNome();
-            j++;
+        try{
+            this.componentesAdicionados.add(this.componentes.get(this.listaComponentesAdicionar.getAnchorSelectionIndex()));
+            this.retornoComponentes = this.componentesAdicionados;
+            System.out.println(this.componentesAdicionados.size());
+            String[] comp = new String[this.componentesAdicionados.size()];
+            int j = 0;
+            for (Componente c : this.componentesAdicionados) {
+                comp[j] = c.getNome();
+                j++;
+            }
+            this.addComponentesListaAdicionados(comp);
+        }catch(ArrayIndexOutOfBoundsException e){
+            
         }
-        this.addComponentesListaAdicionados(comp);
     }//GEN-LAST:event_listaComponentesAdicionarMouseClicked
 
     private void listaComponentesAdicionadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaComponentesAdicionadosMouseClicked
-        this.componentesAdicionados.remove(this.listaComponentesAdicionados.getAnchorSelectionIndex());
-        this.model.remove(this.listaComponentesAdicionados.getAnchorSelectionIndex());
-        this.retornoComponentes = this.componentesAdicionados;
+        try{
+            this.componentesAdicionados.remove(this.listaComponentesAdicionados.getAnchorSelectionIndex());
+            this.model.remove(this.listaComponentesAdicionados.getAnchorSelectionIndex());
+            this.retornoComponentes = this.componentesAdicionados;
+        }catch(ArrayIndexOutOfBoundsException e){
+            
+        }
     }//GEN-LAST:event_listaComponentesAdicionadosMouseClicked
 
     private void botaoConcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoConcluirMouseClicked

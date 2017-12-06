@@ -149,16 +149,22 @@ public class JanelaCadastroPlacas extends javax.swing.JFrame {
         try{
             int digitais = Integer.parseInt(this.jSpinnerPinosDigitais.getValue().toString());
             int analogicos = Integer.parseInt(this.jSpinnerPinosAnalogicos.getValue().toString());
-            if(digitais < 0 || analogicos < 0){
-                showMessageDialog(null, "O número de pinos digitais ou analógicos devem ser maiores que 0 (zero)", "ERRO NO CADASTRO", JOptionPane.ERROR_MESSAGE);
-            }else{
+            if(this.jTextFieldNome.getText().equals("") || this.jTextFieldModelo.getText().equals("")
+                    || this.jTextFieldProcessador.getText().equals(""))
+                showMessageDialog(null, "Dados invalidos, verifique se as entradas foram realizadas corretamente!", "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
+            else{
                 
-                this.placas.add( new Placa(this.jTextFieldNome.getText(),
-                        this.jTextFieldModelo.getText(), this.jTextAreaDescricao.getText(),
-                        this.jTextFieldProcessador.getText(), Integer.parseInt(this.jSpinnerPinosDigitais.getValue().toString()),
-                        Integer.parseInt(this.jSpinnerPinosAnalogicos.getValue().toString())));
-                showMessageDialog(null, "Cadastro Realizado com sucesso.");
-                this.dispose();
+                if(digitais < 0 || analogicos < 0){
+                    showMessageDialog(null, "O número de pinos digitais ou analógicos devem ser maiores que 0 (zero)", "ERRO NO CADASTRO", JOptionPane.ERROR_MESSAGE);
+                }else{
+
+                    this.placas.add( new Placa(this.jTextFieldNome.getText(),
+                            this.jTextFieldModelo.getText(), this.jTextAreaDescricao.getText(),
+                            this.jTextFieldProcessador.getText(), Integer.parseInt(this.jSpinnerPinosDigitais.getValue().toString()),
+                            Integer.parseInt(this.jSpinnerPinosAnalogicos.getValue().toString())));
+                    showMessageDialog(null, "Cadastro Realizado com sucesso.");
+                    this.dispose();
+                }
             }
         }catch(Exception erro){
                     showMessageDialog(null, "Erro ao cadastrar, cheque os dados e tente novamente.", "ERRO NO CADASTRO", JOptionPane.ERROR_MESSAGE);

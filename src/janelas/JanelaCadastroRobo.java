@@ -3,6 +3,8 @@ package janelas;
 import java.util.ArrayList;
 import classes.Componente;
 import classes.Robo;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class JanelaCadastroRobo extends javax.swing.JFrame {
 
@@ -134,10 +136,19 @@ public class JanelaCadastroRobo extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSelecionaComponentesMouseClicked
 
     private void botaoCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCadastrarMouseClicked
-        Robo robo = new Robo(this.textFieldNome.getText(), this.textFieldModelo.getText()
-                , this.textFieldFabricante.getText(), this.textAreaDescricao.getText()
-                , this.componentesAdicionados);
-        this.robos.add(robo);
+        try{
+            if(this.textFieldNome.getText().equals("") || this.textFieldModelo.getText().equals("") || this.textFieldFabricante.getText().equals(""))
+                showMessageDialog(null, "Dados invalidos, verifique se as entradas foram realizadas corretamente!", "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
+            else{
+                Robo robo = new Robo(this.textFieldNome.getText(), this.textFieldModelo.getText()
+                    , this.textFieldFabricante.getText(), this.textAreaDescricao.getText()
+                    , this.componentesAdicionados);
+                this.robos.add(robo);
+                showMessageDialog(null, "Cadastro Realizado com sucesso.");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         
         
     }//GEN-LAST:event_botaoCadastrarMouseClicked
