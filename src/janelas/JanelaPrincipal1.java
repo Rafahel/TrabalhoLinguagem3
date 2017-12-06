@@ -18,6 +18,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import classes.Aluno;
 import classes.Componente;
+import classes.Emprestimo;
 import classes.Placa;
 import classes.Robo;
 
@@ -30,6 +31,7 @@ public class JanelaPrincipal1 extends javax.swing.JFrame {
     private ArrayList<Aluno> alunos;
     private ArrayList<Componente> componentes;
     private ArrayList<Robo> robos;
+    private ArrayList<Emprestimo> emprestimos;
     /**
      * Creates new form JanelaPrincipal
      */
@@ -37,6 +39,7 @@ public class JanelaPrincipal1 extends javax.swing.JFrame {
         this.alunos = new ArrayList();
         this.componentes = new ArrayList();
         this.robos = new ArrayList();
+        this.emprestimos = new ArrayList();
         this.addAlunosTeste();
         this.addComponentesTeste();
         initComponents();
@@ -99,6 +102,7 @@ public class JanelaPrincipal1 extends javax.swing.JFrame {
         this.jButtonListaComponentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/list.png")));
 
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -157,12 +161,22 @@ public class JanelaPrincipal1 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("LABORATORIO SISTEMAS DIGITAIS");
 
+        jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addComponent(DEBUG, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -171,10 +185,8 @@ public class JanelaPrincipal1 extends javax.swing.JFrame {
                             .addComponent(jButtonListaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonCadastroRobo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonCadastroPlaca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonListaComponentes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(DEBUG, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButtonListaComponentes, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 87, Short.MAX_VALUE)
@@ -199,8 +211,10 @@ public class JanelaPrincipal1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButtonListaComponentes, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(DEBUG)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -245,10 +259,17 @@ public class JanelaPrincipal1 extends javax.swing.JFrame {
     private void jButtonListaComponentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonListaComponentesMouseClicked
         JanelaListaComponentes jlc = new JanelaListaComponentes(this.componentes);
     }//GEN-LAST:event_jButtonListaComponentesMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        JanelaEmprestimo je =  new JanelaEmprestimo(this.alunos, this.componentes, this.robos, this.emprestimos);
+        
+    }//GEN-LAST:event_jButton1MouseClicked
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DEBUG;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCadastrarAluno;
     private javax.swing.JButton jButtonCadastroComponente;
     private javax.swing.JButton jButtonCadastroPlaca;

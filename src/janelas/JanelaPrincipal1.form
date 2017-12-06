@@ -26,7 +26,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
+                      <Component id="DEBUG" min="-2" pref="113" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jButtonCadastrarAluno" max="32767" attributes="0"/>
@@ -34,12 +38,9 @@
                           <Component id="jButtonListaAlunos" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButtonCadastroRobo" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButtonCadastroPlaca" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButtonListaComponentes" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
+                          <Component id="jButtonListaComponentes" alignment="1" pref="278" max="32767" attributes="0"/>
+                          <Component id="jButton1" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
-                      <Component id="DEBUG" min="-2" pref="113" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -69,8 +70,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButtonListaComponentes" min="-2" pref="107" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jButton1" pref="107" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="DEBUG" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -159,6 +162,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="LABORATORIO SISTEMAS DIGITAIS"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
