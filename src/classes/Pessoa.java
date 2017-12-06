@@ -1,9 +1,9 @@
 package classes;
 
 public abstract class Pessoa{
-    protected String nome;
-    protected int idade;
-    protected char sexo;
+    private String nome;
+    private int idade;
+    private char sexo;
 
     public Pessoa(String nome, int idade, char sexo) {
         this.nome = nome;
@@ -11,19 +11,33 @@ public abstract class Pessoa{
         this.sexo = sexo;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public char getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
+    }
+
     
     
-    public abstract String getNome();
-
-    public abstract void setNome(String nome);
-
-    public abstract int getIdade();
-
-    public abstract void setIdade(int idade);
-
-    public abstract char getSexo();
-
-    public abstract void setSexo(char sexo);
+    
     
 }
 

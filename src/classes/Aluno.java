@@ -14,32 +14,7 @@ public class Aluno extends Pessoa implements FileFormater {
         this.email = this.getNome() + "@aluno.uri.com";
         
     }
-
-    @Override
-    public String getNome() {
-        return this.nome;
-    }
-
-    @Override
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    @Override
-    public int getIdade() {
-        return this.idade;
-    }
-
-    @Override
-    public char getSexo() {
-        return this.sexo;
-    }
-
-    @Override
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
-    
+   
     public String getMatricula() {
         return matricula;
     }
@@ -75,8 +50,4 @@ public class Aluno extends Pessoa implements FileFormater {
                 + this.getSemestre() + " " + this.getEmail();
     }
 
-    @Override
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
 }
